@@ -27,3 +27,4 @@ werkzeug==2.0.1
 wtforms==2.3.3
 zipp==3.5.0; 
 requests==2.26.0
+flask-apispec
