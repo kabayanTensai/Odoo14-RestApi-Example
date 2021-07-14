@@ -13,8 +13,9 @@ class SaleOrders(Resource):
 
     @jwt_required()
     def get(self):
-        my_headers = {'Authorization': f"{ODOO_API_KEY}"}
+        my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/list",headers=my_headers)
+        import pdb;pdb.set_trace()
         resp_json = json.dumps(response.json())
         if response.status_code == 200:
             return Response(resp_json, mimetype="application/json", status=200)
@@ -25,7 +26,7 @@ class SaleOrders(Resource):
     def post(self):
         user_id = get_jwt_identity()
         body = request.get_json()
-        my_headers = {'Authorization': f"{ODOO_API_KEY}"}
+        my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/",headers=my_headers,data=json.dumps(body))
         resp_json = json.dumps(response.json())
         
@@ -38,7 +39,7 @@ class SaleOrders(Resource):
     def put(self):
         user_id = get_jwt_identity()
         body = request.get_json()
-        my_headers = {'Authorization': f"{ODOO_API_KEY}"}
+        my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/update",headers=my_headers,data=json.dumps(body))
         resp_json = json.dumps(response.json())
         if response.status_code == 200:
@@ -49,8 +50,7 @@ class SaleOrders(Resource):
 class SaleOrder(Resource):
     @jwt_required()
     def get(self, id):
-        print("MASUK SINI")
-        my_headers = {'Authorization': f"{ODOO_API_KEY}"}
+        my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/get/{id}",headers=my_headers)
         
         resp_json = json.dumps(response.json())
