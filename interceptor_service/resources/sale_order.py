@@ -15,7 +15,6 @@ class SaleOrders(Resource):
     def get(self):
         my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/list",headers=my_headers)
-        import pdb;pdb.set_trace()
         resp_json = json.dumps(response.json())
         if response.status_code == 200:
             return Response(resp_json, mimetype="application/json", status=200)
