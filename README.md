@@ -2,7 +2,7 @@
 # README
 Basically this Repo just to prove that its easy to create REST-API on ODOO 14  and integrate it with other service like API-GATEWAY, on this demo It's focusing on Sale Order Activity 
 
-## How To run On Localdevlopment
+## How To run On Local development
 
 To Run This Example Of Rest API in  Odoo just run docker-compose up, Before run docker-compopse make sure create the volume
 ` docker volume create --name=db-data-14 ` and ` docker volume create --name=web-data-14`
