@@ -1,24 +1,66 @@
 <odoo>
-    <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
+  <data>
+    <template id="swagger_api_documentation">
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+            <title>Swagger UI</title>
+            <link rel="stylesheet" type="text/css" href="/efishery_module/static/swagger-ui.css" />
+            <link rel="icon" type="image/png" href="/efishery_module/static/favicon-32x32.png" sizes="32x32" />
+            <link rel="icon" type="image/png" href="/efishery_module/static/favicon-16x16.png" sizes="16x16" />
+            <style>
+      html
+      {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+
+      *,
+      *:before,
+      *:after
+      {
+        box-sizing: inherit;
+      }
+
+      body
+      {
+        margin:0;
+        background: #fafafa;
+      }
+            </style>
+          </head>
+
+          <body>
+            <div id="swagger-ui"></div>
+
+            <script src="/efishery_module/static/swagger-ui-bundle.js" charset="UTF-8"></script>
+            <script src="/efishery_module/static/swagger-ui-standalone-preset.js" charset="UTF-8"></script>
+            <script>
+    window.onload = function() {
+      // Begin Swagger UI call region
+      const ui = SwaggerUIBundle({
+        url: "/efishery_module/static/swagger.json",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      });
+      // End Swagger UI call region
+
+      window.ui = ui;
+    };
+            </script>
+          </body>
+        </html>
+
+      </template>
+
     </data>
-</odoo>
+  </odoo>

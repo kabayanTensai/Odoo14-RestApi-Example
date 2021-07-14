@@ -7,6 +7,11 @@ from datetime import datetime
 
 
 class EfisheryModule(http.Controller):
+
+    @http.route('/api_rest/swagger_doc/',auth='public', method=['GET'])
+    def swagger_doc(self,**kw):
+        return request.render('efishery_module.swagger_api_documentation')
+
     @http.route('/order/list/', auth='my_api_key', method=['GET'])
     def index(self, **kw):
         try:

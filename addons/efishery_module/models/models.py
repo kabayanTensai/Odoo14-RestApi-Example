@@ -97,6 +97,8 @@ class IrHttp(models.AbstractModel):
     @classmethod
     def _auth_method_my_api_key(cls):
         api_key = request.httprequest.headers.get("Authorization")
+        split_api_key = api_key.split(' ')
+        api_key = split_api_key[1]
         if not api_key:
 
             raise Unauthorized(response=Response(json.dumps({
