@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "interceptor_service"
+version = "0.1.0"
+description = ""
+authors = ["Danial Habibi <danial@nubela.co>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Flask-RESTful = "^0.3.9"
+Flask-Bcrypt = "^0.7.1"
+Flask-JWT-Extended = "^4.2.3"
+flask-mongoengine = "^1.0.0"
+Flask = "^2.0.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
