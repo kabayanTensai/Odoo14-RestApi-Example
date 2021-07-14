@@ -23,13 +23,13 @@ to run Interceptor Service need to install python 3.9 on your system then
 Default Config will run interceptor service on port 5000 &  connect to local mongodb & connect to local odoo instance 
 
 ## List of Endpoint on Interceptor Service 
-* `[GET]: /api/saleorder/list`
+* `[GET]: /api/saleorder`
 	* This Endpoint for list every available sale.order on Odoo
 	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>`
 * `[GET]: /api/saleorder/<id>`
 	* 	This Endpoint for get sale.order by Id 
 	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>`
-* `[POST]: /api/webhook/saleorder`
+* `[POST]: /api/saleorder`
 	* This Endpoint to create Sale order
 	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>
 	* Json Body Example 
@@ -47,7 +47,7 @@ Default Config will run interceptor service on port 5000 &  connect to local mon
 	          "price_unit": 40000
 	        }
 	      ] }
-* `[PUT]: /api/webhook/saleorder`
+* `[PUT]: /api/saleorder`
 	* This Endpoint to Update Sale order
 	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>
 	* Json Body Example 
@@ -65,6 +65,17 @@ Default Config will run interceptor service on port 5000 &  connect to local mon
 	          "price_unit": 40000
 	        }
 	      ] }
+
+* `[PUT]: /api/webhook/saleorderr`
+	* This Endpoint for odoo webhook, odoo will send notification with payload everytime there's CRUD happened on sale order
+	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>
+	* Json Body Example 
+
+	        {
+				"event":"postman.test",
+				"payload":{"test":"this is only test"}
+			}
+
 * `/api/auth/signup`
 	* This endpoint for registering new user for accessing Interceptor Service
 	* Json Body Example	`{"email":"habibi@gmail.com"}`
