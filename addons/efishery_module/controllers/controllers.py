@@ -12,6 +12,33 @@ class EfisheryModule(http.Controller):
     def swagger_doc(self,**kw):
         return request.render('efishery_module.swagger_api_documentation')
 
+    @http.route('/order/delete/<int:rec_id>', auth='my_api_key', method=['DELETE'], csrf=False)
+    def delete_sale_order(self,rec_id):
+        try:
+            rec = request.env['sale.order'].sudo().search([['id', '=', rec_id]])
+            print(rec.state,"+++++++++++++++++++++++++++")
+            if rec.state in ['draft'] and rec.state:
+                rec.unlink()
+                return Response(json.dumps({
+                "success": True,
+                "message": "Delete Success"
+            }), 200)
+            elif rec.state is False:
+                return Response(json.dumps({
+                "success": False,
+                "message": "Id Not Found"
+            }), 400)
+            else:
+                return Response(json.dumps({
+                "success": False,
+                "message": "You can not delete a sent quotation or a confirmed sales order. You must first cancel it."
+            }), 400)
+        except:
+            return Response(json.dumps({
+                "success": False,
+                "message": "Internal Server Error"
+            }), 500)
+
     @http.route('/order/list/', auth='my_api_key', method=['GET'])
     def index(self, **kw):
         try:
@@ -159,7 +186,7 @@ class EfisheryModule(http.Controller):
             sale_order_id = data['id']
 
             sale_order = request.env['sale.order'].sudo().search(
-                [['id', '=', 'sale_order_id']])
+                [['id', '=', sale_order_id]])
             if len(sale_order) == 0:
                 return Response("order id not found", status=400)
 
@@ -168,10 +195,7 @@ class EfisheryModule(http.Controller):
                                             "price_unit":order['price_unit']})
                         for order in data['order_line']]
 
-            sale_order.sudo().write({"partner_id": partner_id,
-                                    "date_order": date_order,
-                                    "company_id": company_id,
-                                    "order_line": order_line})
+            sale_order.sudo().write({"partner_id": partner_id,"date_order": date_order,"company_id": company_id,"order_line": order_line})
 
             return Response(json.dumps({"success": True, "message": "Success"}), headers=headers)
         except Exception as e:

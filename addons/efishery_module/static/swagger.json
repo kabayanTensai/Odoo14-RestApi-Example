@@ -349,3 +349,51 @@ paths:
 
      tags:
        - Sale Order
+ /order/delete/{order_id}:
+   delete:
+    summary: Delete Quotation
+    description: >
+      Menghapus quotation order
+    parameters:
+      - $ref: "#/components/parameters/order_id"
+    responses:
+      "200":
+        description: "Ok"
+        content:
+          application/json:
+            examples:
+              response:
+                value:
+                  success: true
+                  message: "Delete Success"
+
+      "401":
+        description: "Unauthorized"
+        content:
+          application/json:
+            examples:
+              response:
+                value:
+                  success: false
+                  message: "Token Not Found"
+      "400":
+        description: "Bad request"
+        content:
+          application/json:
+            examples:
+              response:
+                value:
+                  success: false
+                  message: "order id not found"
+      "500":
+        description: "Internal Server Error"
+        content:
+          application/json:
+            examples:
+              response:
+                value:
+                  success: false
+                  message: "Internal Server Error"
+    tags:
+      - Sale Order
+  

@@ -3,6 +3,7 @@
 Basically this Repo just to prove that its easy to create REST-API on ODOO 14  and integrate it with other service like API-GATEWAY, on this demo It's focusing on Sale Order Activity 
 
 ## How To run On Local development
+I've Include Postman_conneciton.json file 
 
 To Run This Example Of Rest API in  Odoo just run docker-compose up, Before run docker-compopse make sure create the volume
 ` docker volume create --name=db-data-14 ` and ` docker volume create --name=web-data-14`
@@ -23,11 +24,14 @@ to run Interceptor Service need to install python 3.9 on your system then
 Default Config will run interceptor service on port 5000 &  connect to local mongodb & connect to local odoo instance 
 
 ## List of Endpoint on Interceptor Service 
-* `[GET]: /api/saleorder`
+* `[GET]: /api/saleorders`
 	* This Endpoint for list every available sale.order on Odoo
 	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>`
 * `[GET]: /api/saleorder/<id>`
 	* 	This Endpoint for get sale.order by Id 
+	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>`
+* `[DELETE]: /api/saleorder/delete/<id>`
+	* 	This Endpoint for delete sale.order by Id 
 	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>`
 * `[POST]: /api/saleorder`
 	* This Endpoint to create Sale order
@@ -47,7 +51,7 @@ Default Config will run interceptor service on port 5000 &  connect to local mon
 	          "price_unit": 40000
 	        }
 	      ] }
-* `[PUT]: /api/saleorder`
+* `[PUT]: /api/saleorders`
 	* This Endpoint to Update Sale order
 	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>
 	* Json Body Example 
@@ -66,7 +70,7 @@ Default Config will run interceptor service on port 5000 &  connect to local mon
 	        }
 	      ] }
 
-* `[PUT]: /api/webhook/saleorderr`
+* `[PUT]: /api/webhook/saleorder`
 	* This Endpoint for odoo webhook, odoo will send notification with payload everytime there's CRUD happened on sale order
 	* With Token  got from `/api/auth/login` set Header with `Authorization Bearer <your_token>
 	* Json Body Example 

@@ -1,0 +1,478 @@
+{
+	"info": {
+		"_postman_id": "f77476b8-b7eb-4a6e-9a65-04466f3c04c6",
+		"name": "OdooAPI-Efishery",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[Interceptor] Signup To Interceptor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"danial@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Interceptor] Login & get JWT Token Interceptor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"apikey\":\"ff404c1e11bdb9b9ef010089b266781a\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Interceptor] Interceptor Webhook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyNjE5NDEzMywianRpIjoiMWY2ZjBhNDktMjhmZS00MmIwLTkzZjUtZWU1MTY3MzA1ZWE0IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYwZWRhOWVjODRkOTg5NDYzNTU1YzQ1NSIsIm5iZiI6MTYyNjE5NDEzMywiZXhwIjoxNjU3Mjk4MTMzfQ.i85cX1CHl0QVuCYIXy4PkEEVWyBgsuOrNDiRhhkKn0E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "apikey",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event\":\"postman.test\",\r\n    \"payload\":{\"test\":\"this is only test\"}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/webhook/saleorder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"webhook",
+						"saleorder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Interceptor] List Sale Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyNjY5OTA3MCwianRpIjoiMDhmZTU1YTEtNjViYS00MzZmLWEzODMtZmEzYzcwMDY3ZDMzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYwZjU3NTM2ZGIwYmJkYWUyYTEzODc5YSIsIm5iZiI6MTYyNjY5OTA3MCwiZXhwIjoxNjU3ODAzMDcwfQ.42KrI84r4Jzy0eCPZsyZTXI2I7sjtK0p6qDCEq5TpmM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "cookies-id",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/api/saleorders",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"saleorders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Interceptor] Create Sale Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyNjY5OTA3MCwianRpIjoiMDhmZTU1YTEtNjViYS00MzZmLWEzODMtZmEzYzcwMDY3ZDMzIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYwZjU3NTM2ZGIwYmJkYWUyYTEzODc5YSIsIm5iZiI6MTYyNjY5OTA3MCwiZXhwIjoxNjU3ODAzMDcwfQ.42KrI84r4Jzy0eCPZsyZTXI2I7sjtK0p6qDCEq5TpmM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"ASD-852/FDR/01/344\",\r\n  \"partner_id\": 11,\r\n  \"date_order\": \"2021-06-10 06:47:27\",\r\n  \"company_id\": 1,\r\n  \"order_line\": [\r\n    {\r\n      \"product_id\": \"31\",\r\n      \"product_uom_qty\": 1,\r\n      \"product_uom\": 24,\r\n      \"price_unit\": 40000\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/saleorders",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"saleorders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Interceptor] Get Sale Order By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyNjIyMjgzMiwianRpIjoiZTU1NTNlNzItZmM1Yi00Y2M3LTk3MDctMjYwNWFmNjA5N2Q1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYwZWRhOWVjODRkOTg5NDYzNTU1YzQ1NSIsIm5iZiI6MTYyNjIyMjgzMiwiZXhwIjoxNjU3MzI2ODMyfQ.2_DVP2pXMogkI9LK5NieSaUtDdL9zGxvCrj7s8dIc-w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/saleorder/76",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"saleorder",
+						"76"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Interceptor] Delete Sale Order By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyNjcwODYwNCwianRpIjoiZTBlOGQ0ZDctNjU2Ni00NGNmLWI2YTUtODFmZGEzOGQxNDE5IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYwZjU3NTM2ZGIwYmJkYWUyYTEzODc5YSIsIm5iZiI6MTYyNjcwODYwNCwiZXhwIjoxNjU3ODEyNjA0fQ.c_VU1THriJ6_O86wn1O8QuatAHc5jTKEmoK2yeuvzb8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/saleorder/delete/74",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"saleorder",
+						"delete",
+						"74"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Interceptor] Update Sale Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyNjIyMjgzMiwianRpIjoiZTU1NTNlNzItZmM1Yi00Y2M3LTk3MDctMjYwNWFmNjA5N2Q1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjYwZWRhOWVjODRkOTg5NDYzNTU1YzQ1NSIsIm5iZiI6MTYyNjIyMjgzMiwiZXhwIjoxNjU3MzI2ODMyfQ.2_DVP2pXMogkI9LK5NieSaUtDdL9zGxvCrj7s8dIc-w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 76,\r\n  \"name\": \"ASD-852/FDR/01/126\",\r\n  \"partner_id\": 10,\r\n  \"date_order\": \"2021-06-10 06:47:27\",\r\n  \"company_id\": 1,\r\n  \"order_line\": [\r\n        {\r\n            \"id\": 122,\r\n            \"product_id\": 31,\r\n            \"product_uom_qty\": 1.0,\r\n            \"product_uom\": \"Units\",\r\n            \"price_unit\": 40000.0\r\n        },\r\n        {\r\n            \"id\": 123,\r\n            \"product_id\": 18,\r\n            \"product_uom_qty\": 1.0,\r\n            \"product_uom\": \"Units\",\r\n            \"price_unit\": 1000\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/saleorders",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"saleorders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Odoo RestApi] List Sale Order",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "933d781224995611faa0b943632c50b22c322e66",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8069/order/list/",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"order",
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Odoo RestApi] Delete Sale Order By Id Via Odoo RestApi",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 933d781224995611faa0b943632c50b22c322e66",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8069/order/delete/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"order",
+						"delete",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Odoo RestApi] Create Sale order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 1b5ffc48128d1c1b178854469d9ecb1addf6cd70",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"ASD-852/FDR/01/AS126\",\r\n  \"partner_id\": 11,\r\n  \"date_order\": \"2021-06-10 06:47:27\",\r\n  \"company_id\": 1,\r\n  \"order_line\": [\r\n    {\r\n      \"product_id\": \"31\",\r\n      \"product_uom_qty\": 1,\r\n      \"product_uom\": 24,\r\n      \"price_unit\": 40000\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8069/order/",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Odoo RestApi] Update Sale Order",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "933d781224995611faa0b943632c50b22c322e66",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 59,\r\n  \"name\": \"ASD-852/FDR/01/15\",\r\n  \"partner_id\": 11,\r\n  \"date_order\": \"2021-06-10 06:47:27\",\r\n  \"company_id\": 1,\r\n  \"order_line\": [\r\n    {\r\n        \"id\":84,\r\n      \"product_id\": 31,\r\n      \"product_uom_qty\": 6,\r\n      \"product_uom\": 24,\r\n      \"price_unit\": 5000\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8069/order",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Odoo restApi] Get Sale Order By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "933d781224995611faa0b943632c50b22c322e66",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8069/order/get/76",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"order",
+						"get",
+						"76"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Odoo RestApi] Delete Sale Order By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "933d781224995611faa0b943632c50b22c322e66",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8069/order/delete/75",
+					"host": [
+						"localhost"
+					],
+					"port": "8069",
+					"path": [
+						"order",
+						"delete",
+						"75"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

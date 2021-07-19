@@ -15,10 +15,11 @@ class SaleOrders(Resource):
     def get(self):
         my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/list",headers=my_headers)
-        resp_json = json.dumps(response.json())
         if response.status_code == 200:
+            resp_json = json.dumps(response.json())
             return Response(resp_json, mimetype="application/json", status=200)
         else:
+            resp_json = json.dumps({"messsage":response.text})
             return Response(resp_json, mimetype="application/json", status=response.status_code)
 
     @jwt_required()
@@ -27,11 +28,12 @@ class SaleOrders(Resource):
         body = request.get_json()
         my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/",headers=my_headers,data=json.dumps(body))
-        resp_json = json.dumps(response.json())
-        
+
         if response.status_code == 200:
+            resp_json = json.dumps(response.json())
             return Response(resp_json, mimetype="application/json", status=200)
         else:
+            resp_json = json.dumps({"messsage":response.text})
             return Response(resp_json, mimetype="application/json", status=response.status_code)
     
     @jwt_required()
@@ -40,10 +42,12 @@ class SaleOrders(Resource):
         body = request.get_json()
         my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/update",headers=my_headers,data=json.dumps(body))
-        resp_json = json.dumps(response.json())
+        
         if response.status_code == 200:
+            resp_json = json.dumps(response.json())
             return Response(resp_json, mimetype="application/json", status=200)
         else:
+            resp_json = json.dumps({"messsage":response.text})
             return Response(resp_json, mimetype="application/json", status=response.status_code)
 
 class SaleOrder(Resource):
@@ -51,9 +55,20 @@ class SaleOrder(Resource):
     def get(self, id):
         my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
         response = apiRequest.get(f"{ODOO_API_ENDPOINT}/get/{id}",headers=my_headers)
-        
-        resp_json = json.dumps(response.json())
         if response.status_code == 200:
+            resp_json = json.dumps(response.json())
             return Response(resp_json, mimetype="application/json", status=200)
         else:
+            resp_json = json.dumps({"messsage":response.text})
+            return Response(resp_json, mimetype="application/json", status=response.status_code)
+class SaleOrderDelete(Resource):   
+    @jwt_required()
+    def delete(self, id):
+        my_headers = {'Authorization': f"Bearer {ODOO_API_KEY}"}
+        response = apiRequest.get(f"{ODOO_API_ENDPOINT}/delete/{id}",headers=my_headers)
+        if response.status_code == 200:
+            resp_json = json.dumps(response.json())
+            return Response(resp_json, mimetype="application/json", status=200)
+        else:
+            resp_json = json.dumps({"messsage":response.text})
             return Response(resp_json, mimetype="application/json", status=response.status_code)
